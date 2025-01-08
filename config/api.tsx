@@ -6,6 +6,9 @@ const API = {
     GET_LIST: `${API_URL}/users`,
     CREATE: `${API_URL}/users/create`,
     ACTIONS: `${API_URL}/users/:id`
+  },
+  PRODUCTS: {
+    GET_LIST:  `${API_URL}/products`,
   }
 }
 

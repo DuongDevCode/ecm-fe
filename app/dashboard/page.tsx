@@ -2,9 +2,24 @@
 import LogoBanner from "@/components/LogoBanner"
 import styles from '@/styles/styles.module.css'
 import FooterPage from "@/components/layout/Footer"
+import { useQuery } from "@tanstack/react-query"
+import API from "@/config/api"
 export default function DashboardPage() {
   const classBtnContent = 'text-sm bg-black text-white hover:underline hover:bg-[#006e52] py-2 px-4 rounded-sm'
   const classPCustom = 'text-gray-600 text-sm py-3'
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ['products'],
+    queryFn: () =>
+      fetch(API.PRODUCTS.GET_LIST).then((res) =>
+        res.json(),
+      ),
+  })
+
+  if (isPending) return <div className="flex justify-center items-center text-sky-500">Loading...</div>
+
+  if (error) return <div className="text-red-500">An error has occurred: {error.message}</div>
+
   return (
     <>
       <div className="min-h-[500px] flex items-center justify-center" style={{
@@ -57,81 +72,30 @@ export default function DashboardPage() {
         <div>
           <h3 className="mt-12 mb-12 text-center uppercase h5 tracking-widest">Featured Products</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="listing-tem">
-              <div className={`${styles['product-thumbnail-listing']}`}>
-                <a href="/men/nike-react-phantom-run-flyknit-2-180">
-                  <img src="https://demositefiles.blob.core.windows.net/images/catalog/1742/9873/plv3335-Pink-listing.png" alt="Nike react phantom run flyknit 2" />
-                </a>
-              </div>
-              <div className={`${styles['product-name']} product-list-name mt-4 mb-1`}>
-                <a href="/men/nike-react-phantom-run-flyknit-2-180" className="font-bold hover:underline h5">
-                <span>Nike react phantom run flyknit 2</span>
-                </a>
-              </div>
-              <div className="product-price-listing">
-                <div>
-                  <span className="sale-price font-semibold">$718.00</span>
+            {
+              data && data.data.map((item: any, idx: number) => (
+                <div key={idx} className="listing-tem">
+                  <div className={`${styles['product-thumbnail-listing']}`}>
+                    <a href="#">
+                      <img src={item.image_url} alt={item.name} />
+                    </a>
+                  </div>
+                  <div className={`${styles['product-name']} product-list-name mt-4 mb-1`}>
+                    <a href="#" className="font-bold hover:underline h5">
+                    <span>{item.name}</span>
+                    </a>
+                  </div>
+                  <div className="product-price-listing">
+                    <div>
+                      <span className="sale-price font-semibold">${item.price}</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div className="listing-tem">
-              <div className={`${styles['product-thumbnail-listing']}`}>
-                <a href="/men/nike-react-phantom-run-flyknit-2-180">
-                  <img src="https://demositefiles.blob.core.windows.net/images/catalog/9381/3866/plv3878-Purple-listing.png" alt="Nike react phantom run flyknit 2" />
-                </a>
-              </div>
-              <div className={`${styles['product-name']} product-list-name mt-4 mb-1`}>
-                <a href="/men/nike-react-phantom-run-flyknit-2-180" className="font-bold hover:underline h5">
-                <span>Nike react infinity run flyknit</span>
-                </a>
-              </div>
-              <div className="product-price-listing">
-                <div>
-                  <span className="sale-price font-semibold">$543.00</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="listing-tem">
-              <div className={`${styles['product-thumbnail-listing']}`}>
-                <a href="/men/nike-react-phantom-run-flyknit-2-180">
-                  <img src="https://demositefiles.blob.core.windows.net/images/catalog/8957/6157/plv1121-White-listing.png" alt="Nike react phantom run flyknit 2" />
-                </a>
-              </div>
-              <div className={`${styles['product-name']} product-list-name mt-4 mb-1`}>
-                <a href="/men/nike-react-phantom-run-flyknit-2-180" className="font-bold hover:underline h5">
-                <span>Nike court vision low</span>
-                </a>
-              </div>
-              <div className="product-price-listing">
-                <div>
-                  <span className="sale-price font-semibold">$904.00</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="listing-tem">
-              <div className={`${styles['product-thumbnail-listing']}`}>
-                <a href="/men/nike-react-phantom-run-flyknit-2-180">
-                  <img src="https://demositefiles.blob.core.windows.net/images/catalog/2832/2828/plv7836-Blue-listing.png" alt="Nike react phantom run flyknit 2" />
-                </a>
-              </div>
-              <div className={`${styles['product-name']} product-list-name mt-4 mb-1`}>
-                <a href="/men/nike-react-phantom-run-flyknit-2-180" className="font-bold hover:underline h5">
-                <span>Nike zoom fly</span>
-                </a>
-              </div>
-              <div className="product-price-listing">
-                <div>
-                  <span className="sale-price font-semibold">$930.00</span>
-                </div>
-              </div>
-            </div>
+              ))
+            }
           </div>
         </div>
       </div>
-
       <FooterPage />
     </>
   )
