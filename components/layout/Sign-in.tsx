@@ -14,6 +14,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useStore } from "../store/header/store";
+import { User, ShoppingCart } from "lucide-react";
 
 export default function SignInModal() {
   const router = useRouter()
@@ -34,39 +35,30 @@ export default function SignInModal() {
   }
   return (
     <div className="flex items-center">
-      <Button
-        variant="outline"
-        className="border-none hover:bg-white"
+      <button className="mr-4 hover:text-gray-300">
+        <ShoppingCart className="w-4 h-4" />
+      </button>
+      <button className="bg-gray-300 p-2 rounded-full hover:bg-gray-400"
         onClick={() => router.push('/sign-in')}
       >
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-      </Button>
+        <User className="w-4 h-4" />
+      </button>
       {isUser &&
-        <>
-          <AlertDialog open={open} onOpenChange={setOpen}>
-            <AlertDialogTrigger asChild>
-              <Button variant="outline" className="border-none hover:bg-white shadow-white">{isUser}</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Are you logout sure?</AlertDialogTitle>
-                {/* <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete your
-                  account and remove your data from our servers.
-                </AlertDialogDescription> */}
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={onClick}>Continue</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </>
+        <AlertDialog open={open} onOpenChange={setOpen}>
+          <AlertDialogTrigger asChild>
+            <Button variant="outline" className="border-none hover:bg-white shadow-white">{isUser}</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you logout sure?</AlertDialogTitle>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={onClick}>Continue</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       }
     </div>
-
   )
 }

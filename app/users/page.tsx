@@ -29,9 +29,10 @@ export default function UserPage() {
       ),
   })
 
-  if (isPending) return 'Loading...'
+  if (isPending) return <div className="flex justify-center items-center text-sky-500">Loading...</div>
 
-  if (error) return 'An error has occurred: ' + error.message
+  if (error) return <div className="text-red-500">An error has occurred: {error.message}</div>
+  
   return (
     <div className="p-2">
       <h1 className="font-semibold">Danh sách thông tin User</h1>

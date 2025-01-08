@@ -1,5 +1,5 @@
 'use client'
-import HeaderPage from "./header/Header"
+import HeaderPage from "./header/desktop"
 import FooterPage from "./Footer"
 import {
   QueryClient,
@@ -17,7 +17,7 @@ export default function GenerationPage({
     <QueryClientProvider client={queryClient}>
       <main className="grid grid-rows-[20px_1fr_20px] h-screen sm:pb-5 font-[family-name:var(--font-geist-sans)] relative">
         <HeaderPage />
-        <div className="mt-20">
+        <div className="mt-[73px]">
           {children}
         </div>
         <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center absolute bottom-0 text-center">

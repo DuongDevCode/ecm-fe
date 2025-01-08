@@ -11,28 +11,27 @@ import {
 import Link from "next/link";
 import React from "react";
 import { cn } from "@/lib/utils"
+import { Heart } from "lucide-react";
 export default function NavMenu() {
   const components: { title: string; href: string; description: string }[] = [
     {
-      title: "Alert Dialog",
-      href: "/docs/primitives/alert-dialog",
-      description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
+      title: "Men",
+      href: "/product/men",
+      description: "",
     },
     {
-      title: "Progress",
-      href: "/docs/primitives/progress",
-      description:
-        "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      title: "Women",
+      href: "/product/women",
+      description: "",
     }
   ]
   return(
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Shop <Heart className="w-3 h-3 text-red-500 ml-2" /></NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[250px] md:grid-row-1 lg:w-[300px] ">
+            <ul className="grid w-[100px] gap-3 p-2 md:w-[150px] md:grid-row-1 lg:w-[100px] ">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -48,7 +47,14 @@ export default function NavMenu() {
         <NavigationMenuItem>
           <Link href="/users" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Users
+              User
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/about-us" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              About us
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

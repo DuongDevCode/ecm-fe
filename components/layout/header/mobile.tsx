@@ -8,7 +8,6 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import {AlignJustify} from "lucide-react";
-import NavigationMenuDemo from "../SearchHeader";
 import Image from "next/image";
 
 export function MobileHeader() {
@@ -33,7 +32,6 @@ export function MobileHeader() {
                     </SheetTitle>
                     {/* <SheetDescription>
                     </SheetDescription> */}
-                    <NavigationMenuDemo />
                 </SheetHeader>
             </SheetContent>
         </Sheet>
