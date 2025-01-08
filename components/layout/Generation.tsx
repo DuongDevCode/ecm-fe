@@ -15,14 +15,11 @@ export default function GenerationPage({
 }>) {
   return (
     <QueryClientProvider client={queryClient}>
-      <main className="grid grid-rows-[20px_1fr_20px] h-screen sm:pb-5 font-[family-name:var(--font-geist-sans)] relative">
+      <main className="grid grid-rows-[20px_1fr_20px] h-screen sm:pb-5 font-[family-name:var(--font-geist-sans)]">
         <HeaderPage />
         <div className="mt-[73px]">
           {children}
         </div>
-        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center absolute bottom-0 text-center">
-          <FooterPage />
-        </footer>
       </main>
     </QueryClientProvider>
   )
