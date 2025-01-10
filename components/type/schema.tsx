@@ -21,3 +21,12 @@ export const RegisterFormSchema = z.object({
   position: z.string(),
   phone: z.string(),
 });
+
+export const LoginManagerFormSchema = z.object({
+  email: z.string().min(2, {
+    message: "Username isn't available.",
+  }),
+  pwd: z.string().min(2, {
+    message: "Password isn't available",
+  }),
+});

@@ -21,7 +21,7 @@ export default function HeaderPage() {
         {/* DESKTOP RESPONSIVE */}
         <div className={`${styles['header-desktop']} flex justify-between w-full`}>
           <NavMenu />
-          <Logo width={40} height={40} colorCustomizing="" />
+          <Logo width={40} height={40} colorCustomizing="" url="/dashboard" />
           <SignInModal />
         </div>
 

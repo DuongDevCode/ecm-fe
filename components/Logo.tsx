@@ -1,9 +1,9 @@
 export default function Logo({
-  width, height, colorCustomizing
-}: { width: number, height: number, colorCustomizing: string }) {
+  width, height, colorCustomizing, url
+}: { width: number, height: number, colorCustomizing: string, url: string }) {
   return (
     <div className="logo md:ml-0 flex justify-center items-center">
-      <a href="/dashboard" className="logo-icon">
+      <a href={url} className="logo-icon">
         <svg
           width={width}
           height={height}

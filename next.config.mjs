@@ -2,7 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_KEY_PUBLIC: process.env.NEXT_PUBLIC_KEY_PUBLIC,
+    NEXT_PUBLIC_IV_PUBLIC: process.env.NEXT_PUBLIC_IV_PUBLIC
   },
   images: {
     remotePatterns: [

@@ -73,7 +73,7 @@ export default function DashboardPage() {
           <h3 className="mt-12 mb-12 text-center uppercase h5 tracking-widest">Featured Products</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {
-              data && data.data.map((item: any, idx: number) => (
+              (data && data.data.length) && data.data?.map((item: any, idx: number) => (
                 <div key={idx} className="listing-tem">
                   <div className={`${styles['product-thumbnail-listing']}`}>
                     <a href="#">

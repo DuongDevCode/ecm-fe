@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign In Page",
+  title: "Login",
   description: "Author Duongdt_dev",
 };
-export default function SignInLayout({
+export default function RegisterLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
