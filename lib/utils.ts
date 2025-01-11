@@ -10,7 +10,9 @@ const KEY_PUBLIC = process.env.NEXT_PUBLIC_KEY_PUBLIC ?? ''
 const IV_PUBLIC = process.env.NEXT_PUBLIC_IV_PUBLIC ?? ''
 
 export const encrypt = function (plaintext: string) {
-  const cipher: Cipher = crypto.createCipheriv(algorithm, KEY_PUBLIC, IV_PUBLIC)
+  const key = Buffer.from(KEY_PUBLIC, 'hex'); // Chuyển key từ hex sang Buffer
+  const iv = Buffer.from(IV_PUBLIC, 'hex');  // Chuyển iv từ hex sang Buffer
+  const cipher: Cipher = crypto.createCipheriv(algorithm, key, iv)
   const cipherChunks: string[] = []
   cipherChunks.push(cipher.update(plaintext, charset, cipherEncoding))
   cipherChunks.push(cipher.final(cipherEncoding))
@@ -31,4 +33,9 @@ export const decrypt = function (plaintext: string) {
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+export function capitalizeFirstLetter(value: string) {
+  if (!value) return ''; // Xử lý trường hợp chuỗi rỗng
+  return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }

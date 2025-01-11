@@ -1,5 +1,5 @@
 'use client'
-import LogoBanner from "@/components/LogoBanner"
+import LogoBanner from "@/components/Logo/logoBannerEcm"
 import styles from '@/styles/styles.module.css'
 import FooterPage from "@/components/layout/Footer"
 import { useQuery } from "@tanstack/react-query"

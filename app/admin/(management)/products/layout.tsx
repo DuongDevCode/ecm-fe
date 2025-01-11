@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Register Page",
+  title: "Products",
   description: "Author Duongdt_dev",
 };
-export default function RegisterLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;

@@ -16,8 +16,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DataTablePagination } from "./data-table-pagination";
-import DataTableToolbar from "./data-table-toolbar";
+import { DataTablePagination } from "../users/data-table-pagination";
+import DataTableToolbar from "../users/data-table-toolbar";
 interface PaginationProps {
   pageIndex: number;
   pageSize: number;
@@ -84,7 +84,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-      <DataTableToolbar />
+      {/* <DataTableToolbar /> */}
       <div className="rounded-md flex border overflow-auto">
         <Table>
           <TableHeader className="z-10">

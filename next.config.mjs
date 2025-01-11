@@ -12,6 +12,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.monocubed.com',
         pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'demositefiles.blob.core.windows.net',
+        pathname: '**',
       }
     ]
   }

@@ -16,15 +16,17 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, UserRoundPlusIcon } from "lucide-react";
 import { RegisterFormSchema } from "@/components/type/schema";
 import { useRouter } from "next/navigation";
 import API from "@/config/api";
+import { capitalizeFirstLetter } from "@/lib/utils";
+
 type RegisterSchema = z.infer<typeof RegisterFormSchema>
 
 export default function RegisterPage() {
   const router = useRouter()
-  const arrField = ['fullname','email','address','phone', 'position']
+  const arrField = ['fullname', 'email', 'address', 'phone', 'position','pwd']
   const [pwdShow, setPwdShow] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
   const form = useForm<z.infer<typeof RegisterFormSchema>>({
@@ -55,7 +57,7 @@ export default function RegisterPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(values)
-        })
+      })
       const data = await res.json()
       if (data.code == 200 && data.data.id) {
         toast({
@@ -65,7 +67,7 @@ export default function RegisterPage() {
         });
         router.back()
       } else throw new Error(data.data.message)
-    } catch(err) {
+    } catch (err) {
       toast({
         title: "Notification",
         variant: 'destructive',
@@ -77,49 +79,49 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="w-full m-auto flex justify-center" style={{margin: '1rem auto 6rem'}}>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-96">
-          {
-            arrField.map((item: string, index: number) =>
-              <FormField
-                key={index}
-                control={form.control}
-                name={item as 'address' | 'email' | 'fullname' | 'phone'}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{item} (*)</FormLabel>
-                    <FormControl>
-                      <Input placeholder={item} {...field} required />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            )
-          }
-          <FormField
-            control={form.control}
-            name="pwd"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password (*)</FormLabel>
-                <div className="relative">
-                  <FormControl>
-                    <Input type={pwdShow ? 'text' : 'password'} className="pr-7" placeholder="Password" {...field} required />
-                  </FormControl>
-                  <FormMessage />
-                  <button type="button" className="absolute right-3 top-3" onClick={() => setPwdShow(!pwdShow)}>
-                    {pwdShow ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                  </button>
-                </div>
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
-    </div>
+    <>
+      <h1 className="flex justify-start items-center font-semibold underline"><UserRoundPlusIcon className="mr-2" /> Add new user information</h1>
+      <div className="w-full m-auto md:w-3/4 mt-6">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} >
+            <div className="grid grid-cols-2 gap-4 mb-4">
+            {
+              arrField.map((item: string, index: number) =>
+                <FormField
+                  key={index}
+                  control={form.control}
+                  name={item as 'address' | 'email' | 'fullname' | 'phone' | 'position' | 'pwd'}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-semibold">{capitalizeFirstLetter(item)} (*)</FormLabel>
+                      {
+                        field.name == 'pwd' ?
+                          <div className="relative">
+                            <FormControl>
+                              <Input type={pwdShow ? 'text' : 'password'} className="pr-7" placeholder="Password" {...field} required />
+                            </FormControl>
+                            <FormMessage />
+                            <button type="button" className="absolute right-3 top-3" onClick={() => setPwdShow(!pwdShow)}>
+                              {pwdShow ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                            </button>
+                          </div> :
+                          <FormControl>
+                            <Input placeholder={item} {...field} required />
+                          </FormControl>
+                      }
 
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )
+            }
+            </div>
+            
+            <div className="w-full flex justify-end"><Button type="submit">Submit</Button></div>
+          </form>
+        </Form>
+      </div>
+    </>
   )
 }

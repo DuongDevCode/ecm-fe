@@ -1,13 +1,15 @@
 'use client'
-import { DataTable } from "@/components/table/users/data-table";
+import { DataTable } from "@/components/table/common/data-table";
 import {
   useQuery
 } from '@tanstack/react-query'
 import API from "@/config/api";
 import { columns } from "@/components/table/users/data-table-columns";
 import { useState, useMemo } from "react";
+import { SquarePlusIcon, UserCircle2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 export default function UserPage() {
-
+  const router = useRouter()
   const [{ pageIndex, pageSize }, setPagination] = useState({
     pageIndex: 0,
     pageSize: 20
@@ -35,7 +37,14 @@ export default function UserPage() {
   
   return (
     <div className="p-2">
-      <h1 className="font-semibold">Danh sách thông tin User</h1>
+      <section className="flex justify-between mb-4 items-center">
+        <h1 className="font-semibold flex items-center">
+          <UserCircle2 className="h-6 w-6 mr-2" /> User list information
+        </h1>
+        <button className="flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white rounded-md px-2 py-1" onClick={() => router.push('/admin/register')}>
+          <SquarePlusIcon className="h-4 w-4" />
+        </button>
+      </section>
       <DataTable
         columns={columns}
         data={data.data}

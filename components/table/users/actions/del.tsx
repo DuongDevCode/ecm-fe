@@ -1,20 +1,16 @@
 import { Button } from "@/components/ui/button"
 import API from "@/config/api"
 import { toast } from "@/hooks/use-toast";
-import { confirm } from "@/components/confirm";
 import {
   AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Trash2Icon } from "lucide-react";
 export default function DelAction({ id, name }: { id: number, name: string }) {
   const [open, setOpen] = useState<boolean>(false)
   const queryClient = useQueryClient()
@@ -60,7 +56,9 @@ export default function DelAction({ id, name }: { id: number, name: string }) {
     <>
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogTrigger asChild>
-          <Button className="h-8" variant={'destructive'}>Xoá</Button>
+          <Button variant={'secondary'}>
+            <Trash2Icon className="w-4 h-4 text-red-500" />
+          </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
