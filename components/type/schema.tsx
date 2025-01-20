@@ -29,6 +29,10 @@ export const LoginManagerFormSchema = z.object({
   pwd: z.string().min(2, {
     message: "Password isn't available",
   }),
+  fullname: z.string(),
+  email: z.string(),
+  address: z.string(),
+  position: z.string()
 });
 
 export const loginResponseSchema = z.object({
@@ -50,6 +54,10 @@ export type LoginValidSchema = z.infer<typeof loginResponseSchema>
 export interface RegisterSchema {
   phone: string
   pwd: string
+  fullname: string
+  address: string
+  email: string
+  position: string
 }
 
 export interface LoginError {

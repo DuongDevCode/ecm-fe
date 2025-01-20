@@ -1,4 +1,5 @@
 'use client'
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,15 +11,23 @@ import Logo from "@/components/Logo/logoHeaderEcm";
 import { useMutation } from "@tanstack/react-query";
 import API from "@/config/api";
 import { toast } from "@/hooks/use-toast";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import { encrypt } from "@/lib/utils";
+import { formatStrUpperCase } from "@/lib/utils";
+import { getFieldNameLoginOrRegister } from "@/lib/constants";
 export default function Login() {
   const router = useRouter()
+  const [isRegister, setIsRegister] = useState<boolean>(false)
+  const arrField = ['fullname', 'email', 'address', 'position', 'phone', 'pwd']
   const form = useForm<z.infer<typeof LoginManagerFormSchema>>({
     resolver: zodResolver(LoginManagerFormSchema),
     defaultValues: {
+      fullname: '',
+      address: '',
+      email: '',
+      position: '',
       phone: '',
-      pwd: '',
+      pwd: ''
     } as RegisterSchema,
   })
 
@@ -65,38 +74,37 @@ export default function Login() {
     <div className="flex justify-center items-center h-screen">
       <Form {...form}>
         <form className="flex flex-col gap-4 border rounded-md border-gray-200 py-4 px-8 shadow-2xl w-[468px]" onSubmit={form.handleSubmit(onSubmit)}>
-          <Logo width={60} height={60} colorCustomizing="" url='' />
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel className="sans-serif text-gray-500">Phone</FormLabel>
-                  <FormControl>
-                    <Input type='number' min={0} placeholder="phone" value={field.value} onChange={field.onChange} disabled={mutateLogin.isPending} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )
-            }}
-          />
-          <FormField
-            control={form.control}
-            name="pwd"
-            render={({ field }) => {
-              return (
-                <FormItem>
-                  <FormLabel className="sans-serif text-gray-500">Password</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Password" type="password" value={field.value} onChange={field.onChange} disabled={mutateLogin.isPending} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )
-            }}
-          />
-          <Button variant={'default'} type='submit' disabled={mutateLogin.isPending}>Login</Button>
+          <Logo width={60} height={60} colorCustomizing="" url='/admin/login' />
+          {
+            arrField?.map((item: string, idx: number) =>
+              <FormField
+                key={idx}
+                control={form.control}
+                name={item as keyof z.infer<typeof LoginManagerFormSchema>}
+                render={({ field }) => {
+                  return (
+                    <>
+                      {
+                        (isRegister || (!isRegister && ['pwd', 'phone'].includes(item))) ? (
+                          <FormItem>
+                            <FormLabel className="sans-serif text-gray-500">{getFieldNameLoginOrRegister(item)}</FormLabel>
+                            <FormControl>
+                              <Input type={item == 'pwd' ? 'password' : (item == 'phone' ? 'number' : 'text')} min={0} placeholder={`Nhập ${getFieldNameLoginOrRegister(item).toLocaleLowerCase()}`} value={field.value} onChange={field.onChange} disabled={mutateLogin.isPending} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        ) : null
+                      }
+                    </>
+                  )
+                }}
+              />
+            )
+          }
+          <Button variant={'default'} type='submit' disabled={mutateLogin.isPending}>{getFieldNameLoginOrRegister(isRegister ? 'register' : 'login')}</Button>
+          <button type="button" className="text-left text-sky-500 underline hover:text-sky-600" onClick={() => setIsRegister(!isRegister)}>
+            {getFieldNameLoginOrRegister(isRegister ? 'back_to_login' : 'create_an_account')}
+          </button>
         </form>
       </Form>
     </div>

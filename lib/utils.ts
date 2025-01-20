@@ -39,3 +39,5 @@ export function capitalizeFirstLetter(value: string) {
   if (!value) return ''; // Xử lý trường hợp chuỗi rỗng
   return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }
+
+export const formatStrUpperCase = (str: string) => str.replace(/^./, str[0].toUpperCase())

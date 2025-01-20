@@ -8,7 +8,7 @@ import { columns } from "@/components/table/products/data-table-columns";
 import { useState, useMemo } from "react";
 import { SquarePlusIcon, UserCircle2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import AddProductButton from "@/components/table/products/actions/Add";
+import Link from "next/link";
 export default function ProductsPage() {
   const router = useRouter()
   const [{ pageIndex, pageSize }, setPagination] = useState({
@@ -44,9 +44,11 @@ export default function ProductsPage() {
     <div className="p-2">
       <section className="flex justify-between mb-4 items-center">
         <h1 className="font-semibold flex items-center">
-          <UserCircle2 className="h-6 w-6 mr-2" /> Products list
+          <UserCircle2 className="h-6 w-6 mr-2" /> Products
         </h1>
-        <AddProductButton />
+        <Link href="/admin/products/new" className="text-logo_admin border border-logo_admin hover:bg-logo_admin hover:text-white px-2 py-1 rounded">
+          Add new 
+        </Link>
       </section>
       <DataTable
         columns={columns}
