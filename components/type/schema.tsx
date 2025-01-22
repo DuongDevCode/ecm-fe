@@ -17,6 +17,7 @@ export const RegisterFormSchema = z.object({
     message: "Password isn't available",
   }),
   fullname: z.string().min(2, { message: "Fullname isn't available" }),
+  dob: z.string(),
   address: z.string(),
   position: z.string(),
   phone: z.string(),
@@ -30,6 +31,7 @@ export const LoginManagerFormSchema = z.object({
     message: "Password isn't available",
   }),
   fullname: z.string(),
+  dob: z.string(),
   email: z.string(),
   address: z.string(),
   position: z.string()
@@ -41,6 +43,7 @@ export const loginResponseSchema = z.object({
     id: z.number(),
     fullname: z.string(),
     email: z.string(),
+    dob: z.string(),
     address: z.string(),
     phone: z.string(),
     position: z.string(),
@@ -55,6 +58,7 @@ export interface RegisterSchema {
   phone: string
   pwd: string
   fullname: string
+  dob: string
   address: string
   email: string
   position: string

@@ -18,11 +18,12 @@ import { getFieldNameLoginOrRegister } from "@/lib/constants";
 export default function Login() {
   const router = useRouter()
   const [isRegister, setIsRegister] = useState<boolean>(false)
-  const arrField = ['fullname', 'email', 'address', 'position', 'phone', 'pwd']
+  const arrField = ['fullname', 'dob', 'email', 'address', 'position', 'phone', 'pwd']
   const form = useForm<z.infer<typeof LoginManagerFormSchema>>({
     resolver: zodResolver(LoginManagerFormSchema),
     defaultValues: {
       fullname: '',
+      dob: '',
       address: '',
       email: '',
       position: '',
@@ -31,15 +32,15 @@ export default function Login() {
     } as RegisterSchema,
   })
 
-  const mutateLogin = useMutation<LoginValidSchema, LoginError, { phone: string; pwd: string }>({
+  const mutateLogin = useMutation<LoginValidSchema, LoginError, { body: { phone: string; pwd: string, email?: string, fullname?: string, address?: string, position?: string }, api: string }>({
     mutationFn: (formData) =>
-      fetch(API.LOGIN, {
+      fetch(formData.api, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          data: encrypt(JSON.stringify(formData))
+          data: encrypt(JSON.stringify(formData.body))
         })
       }).then((res) => res.json()),
     onSuccess(data) {
@@ -62,12 +63,32 @@ export default function Login() {
   })
 
   const onSubmit = async (values: z.infer<typeof LoginManagerFormSchema>) => {
-    const encrypt_pwd = encrypt(values.pwd)
-    const payload = {
-      phone: values.phone,
-      pwd: encrypt_pwd
+    if (isRegister) {
+      const encrypt_pwd = encrypt(values.pwd)
+      const payload = {
+        body: {
+          fullname: values.fullname,
+          dob: values.dob,
+          email: values.email,
+          address: values.address,
+          position: values.position,
+          phone: values.phone,
+          pwd: encrypt_pwd
+        },
+        api: API.USER.CREATE
+      }
+      mutateLogin.mutate(payload)
+    } else {
+      const encrypt_pwd = encrypt(values.pwd)
+      const payload = {
+        body: {
+          phone: values.phone,
+          pwd: encrypt_pwd,
+        },
+        api: API.LOGIN
+      }
+      mutateLogin.mutate(payload)
     }
-    mutateLogin.mutate(payload)
   }
 
   return (

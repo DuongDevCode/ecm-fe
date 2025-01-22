@@ -9,7 +9,8 @@ export const getFieldNameLoginOrRegister = (value: string) => {
     register: 'Đăng ký',
     login: 'Đăng nhập',
     back_to_login: 'Quay lai trang đăng nhập',
-    create_an_account: 'Tạo tài khoản'
+    create_an_account: 'Tạo tài khoản',
+    dob: 'Ngày sinh'
   }
   return key?.[value] ?? value
 }
