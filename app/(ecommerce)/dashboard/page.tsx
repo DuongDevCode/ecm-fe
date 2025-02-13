@@ -4,6 +4,9 @@ import styles from '@/styles/styles.module.css'
 import FooterPage from "@/components/layout/Footer"
 import { useQuery } from "@tanstack/react-query"
 import API from "@/config/api"
+import { cn } from "@/lib/utils"
+import { getCurrencyFormat } from "@/lib/utils"
+import Image from "next/image"
 export default function DashboardPage() {
   const classBtnContent = 'text-sm bg-black text-white hover:underline hover:bg-[#006e52] py-2 px-4 rounded-sm'
   const classPCustom = 'text-gray-600 text-sm py-3'
@@ -11,12 +14,28 @@ export default function DashboardPage() {
   const { isPending, error, data } = useQuery({
     queryKey: ['products'],
     queryFn: () =>
-      fetch(API.PRODUCTS.GET_LIST).then((res) =>
+      fetch(API.PRODUCTS.GET_LIST.replace('/:id', '')).then((res) =>
         res.json(),
       ),
   })
 
-  if (isPending) return <div className="flex justify-center items-center text-sky-500">Loading...</div>
+  if (isPending) return <div className="flex justify-center items-center text-sky-500 mt-24 text-xl">
+    Please wait loading 
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={cn("animate-spin")}
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+  </div>
 
   if (error) return <div className="text-red-500">An error has occurred: {error.message}</div>
 
@@ -73,7 +92,7 @@ export default function DashboardPage() {
           <h3 className="mt-12 mb-12 text-center uppercase h5 tracking-widest">Featured Products</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {
-              (data && data.data.length) && data.data?.map((item: any, idx: number) => (
+              (data && data.length) && data?.map((item: any, idx: number) => (
                 <div key={idx} className="listing-tem">
                   <div className={`${styles['product-thumbnail-listing']}`}>
                     <a href="#">
@@ -81,13 +100,13 @@ export default function DashboardPage() {
                     </a>
                   </div>
                   <div className={`${styles['product-name']} product-list-name mt-4 mb-1`}>
-                    <a href="#" className="font-bold hover:underline h5">
+                    <a href={`/products/items/${item.id}`} className="font-bold hover:underline h5 hover:text-sky-500">
                     <span>{item.name}</span>
                     </a>
                   </div>
                   <div className="product-price-listing">
                     <div>
-                      <span className="sale-price font-semibold">${item.price}</span>
+                      <span className="sale-price font-semibold">{getCurrencyFormat(item.price)}</span>
                     </div>
                   </div>
                 </div>

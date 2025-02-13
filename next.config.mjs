@@ -17,6 +17,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'demositefiles.blob.core.windows.net',
         pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'zocker.vn',
+        pathname: '**',
       }
     ]
   }

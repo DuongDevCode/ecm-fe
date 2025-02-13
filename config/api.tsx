@@ -8,7 +8,7 @@ const API = {
     ACTIONS: `${API_URL}/users/:id`
   },
   PRODUCTS: {
-    GET_LIST:  `${API_URL}/products`,
+    GET_LIST:  `${API_URL}/products/:id`,
   }
 }
 

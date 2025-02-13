@@ -41,3 +41,11 @@ export function capitalizeFirstLetter(value: string) {
 }
 
 export const formatStrUpperCase = (str: string) => str.replace(/^./, str[0].toUpperCase())
+
+export const getCurrencyFormat = (value: number | string) =>
+  new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  })
+    .format(typeof value == 'string' ? parseInt(value) : value)
+    .replaceAll(".", ",");
