@@ -9,6 +9,9 @@ const API = {
   },
   PRODUCTS: {
     GET_LIST:  `${API_URL}/products/:id`,
+  },
+  CATEGORIES: {
+    LIST: `${API_URL}/categories`
   }
 }
 

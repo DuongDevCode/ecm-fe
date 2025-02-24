@@ -16,12 +16,12 @@ export default function NavMenu() {
   const components: { title: string; href: string; description: string }[] = [
     {
       title: "Men",
-      href: "/product/men",
+      href: "/products/men",
       description: "",
     },
     {
       title: "Women",
-      href: "/product/women",
+      href: "/products/women",
       description: "",
     }
   ]

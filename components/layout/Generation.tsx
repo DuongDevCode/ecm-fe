@@ -1,6 +1,6 @@
 'use client'
 import HeaderPage from "./header/desktop"
-import FooterPage from "./Footer"
+import LoadingGlobal from "../loadingGlobal"
 import {
   QueryClient,
   QueryClientProvider
@@ -21,6 +21,7 @@ export default function GenerationPage({
           {children}
         </div>
       </main>
+      <LoadingGlobal />
     </QueryClientProvider>
   )
 }

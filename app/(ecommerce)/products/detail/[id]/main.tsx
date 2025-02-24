@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 import API from "@/config/api"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
+import { getCurrencyFormat } from "@/lib/utils"
 export default function ProductDetailItemPage(
   {id}: {id: string}
 ) {
@@ -42,9 +43,11 @@ export default function ProductDetailItemPage(
         <ul>
           <li>Name: {data.name}</li>
           <li>Description: {data.description}</li>
-          <li>Price: {data.price}</li>
-          <li>Quantity: {data.quantity}</li>
-          <li>Status: {data.status ? 'Đang bán' : 'Ngừng bán'}</li>
+          <li>Price: {getCurrencyFormat(data.price)}</li>
+          {/* <li>Quantity: {data.quantity}</li> */}
+          <li>
+            Status: <span className={`${data.status ? 'text-green-500' : 'text-red-500'} font-semibold`}>{data.status ? 'Còn hàng' : 'Hết hàng'}</span>
+          </li>
         </ul>
       </div>
     </div>
