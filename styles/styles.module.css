@@ -73,7 +73,7 @@
 .product-thumbnail-listing {
     background-color: #f6f6f6;
     color: rgba(51, 17, 51, .0666666667);
-    min-height: 250px;
+    /* min-height: 250px; */
     display: flex;
     justify-content: center;
     flex-direction: column;

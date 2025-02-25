@@ -14,7 +14,8 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useStore } from "../store/header/store";
-import { User, ShoppingCart } from "lucide-react";
+import { User } from "lucide-react";
+import Cart from "../cart";
 
 export default function SignInModal() {
   const router = useRouter()
@@ -35,9 +36,7 @@ export default function SignInModal() {
   }
   return (
     <div className="flex items-center">
-      <button className="mr-4 hover:text-gray-300">
-        <ShoppingCart className="w-4 h-4" />
-      </button>
+      <Cart />
       <button className="bg-gray-300 p-2 rounded-full hover:bg-gray-400"
         onClick={() => router.push('/sign-in')}
       >

@@ -2,28 +2,55 @@
 import LogoBanner from "@/components/Logo/logoBannerEcm"
 import styles from '@/styles/styles.module.css'
 import FooterPage from "@/components/layout/Footer"
-import { useQuery } from "@tanstack/react-query"
-import API from "@/config/api"
 import { getCurrencyFormat } from "@/lib/utils"
 import Image from "next/image"
+import mountain from '@/public/mountains.jpg'
 import Link from "next/link"
+
 export default function DashboardPage() {
   const classBtnContent = 'text-sm bg-black text-white hover:underline hover:bg-[#006e52] py-2 px-4 rounded-sm'
   const classPCustom = 'text-gray-600 text-sm py-3'
 
-  const { isPending, error, data } = useQuery({
-    queryKey: ['products'],
-    queryFn: () =>
-      fetch(API.PRODUCTS.GET_LIST.replace('/:id', '')).then((res) =>
-        res.json(),
-      ),
-  })
+  const data = [
+    {
+      id: 1,
+      image_url: mountain,
+      name: 'Mountain 1',
+      price: 300000000
+    },
+    {
+      id: 2,
+      image_url: mountain,
+      name: 'Mountain 2',
+      price: 400000000
+    },
+    {
+      id: 3,
+      image_url: mountain,
+      name: 'Mountain 3',
+      price: 500000000
+    },
+    {
+      id: 4,
+      image_url: mountain,
+      name: 'Mountain 4',
+      price: 600000000
+    }
+  ]
 
-  if (isPending) return <div className="flex justify-center items-center text-sky-500 mt-24 text-xl">
-    Please wait loading ...
-  </div>
+  // const { isPending, error, data } = useQuery({
+  //   queryKey: ['products'],
+  //   queryFn: () =>
+  //     fetch(API.PRODUCTS.GET_LIST.replace('/:id', '')).then((res) =>
+  //       res.json(),
+  //     ),
+  // })
 
-  if (error) return <div className="text-red-500">An error has occurred: {error.message}</div>
+  // if (isPending) return <div className="flex justify-center items-center text-sky-500 mt-24 text-xl">
+  //   Please wait loading ...
+  // </div>
+
+  // if (error) return <div className="text-red-500">An error has occurred: {error.message}</div>
 
   return (
     <>
@@ -79,19 +106,26 @@ export default function DashboardPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {
               (data && data.length) && data?.map((item: any, idx: number) => (
-                <div key={idx} className="listing-tem">
-                  <a href={`/products/detail/${item.id}`} className={`${styles['product-thumbnail-listing']}`}>
-                    <Image src={item.image_url ? item.image_url : null} alt={item.name} width={100} height={100} objectFit="cover" className="w-full h-full" />
-                  </a>
-                  <div className={`${styles['product-name']} product-list-name mt-4 mb-1`}>
-                    <a href={`/products/detail/${item.id}`} className="font-bold hover:underline h5 hover:text-sky-500">{item.name}</a>
+                <Link href={`/products/detail/${item.id}`} key={idx} className="listing-tem border hover:shadow-xl shadow-md">
+                  <div className={`${styles['product-thumbnail-listing']} block`}>
+                    <Image
+                      alt="Vercel logo"
+                      src={item.image_url}
+                      width={1000}
+                      height={1000}
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto",
+                      }}
+                      layout="responsive"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="product-price-listing">
-                    <div>
-                      <span className="sale-price font-semibold">{getCurrencyFormat(item.price)}</span>
-                    </div>
+                  <div className={`${styles['product-name']} product-list-name mb-1 p-2`}>
+                    <p className="font-bold hover:underline h5 hover:text-sky-500">{item.name}</p>
+                    <p className="sale-price font-semibold">{getCurrencyFormat(item.price)}</p>
                   </div>
-                </div>
+                </Link>
               ))
             }
           </div>
