@@ -7,7 +7,7 @@ import { LoginManagerFormSchema, LoginValidSchema, RegisterSchema, LoginError } 
 import { Form, FormLabel, FormMessage, FormControl, FormItem, FormField } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Logo from "@/components/Logo/logoHeaderEcm";
+import Logo from "@/components/logo/HeaderEcm";
 import { useMutation } from "@tanstack/react-query";
 import API from "@/config/api";
 import { toast } from "@/hooks/use-toast";

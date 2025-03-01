@@ -1,4 +1,4 @@
-import { dataDetailsProductsSchema } from "./data"
+import { dataDetailsProductsSchema } from "./Data"
 import { useForm, Form } from "react-hook-form"
 import { Input } from "@/components/ui/input"
 import { FormLabel, FormItem, FormControl, FormMessage, FormField } from "@/components/ui/form"

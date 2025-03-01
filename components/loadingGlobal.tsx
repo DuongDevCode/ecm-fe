@@ -1,6 +1,6 @@
 'use client'
 import { cn } from "@/lib/utils"
-import { useStoreLoading } from "./store/loading/store"
+import { useStoreLoading } from "./store/Loading"
 export default function LoadingGlobal() {
   const isLoading = useStoreLoading((state: any) => state.isLoading)
   if (!isLoading) return null

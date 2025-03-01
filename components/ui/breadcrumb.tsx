@@ -19,8 +19,9 @@ export default function BreadCrumb({ items }: BreadCrumbPropsType) {
         <li>
           <div>
             <div className="text-gray-700 hover:text-gray-400 dark:text-slate-300 dark:hover:text-slate-100 cursor-pointer">
-              <HomeIcon className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
-              <span className="sr-only">Home</span>
+              <Link href={'/dashboard'}>
+                <HomeIcon className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </li>

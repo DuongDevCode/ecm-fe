@@ -23,7 +23,13 @@ const nextConfig = {
         hostname: 'zocker.vn',
         pathname: '**',
       }
-    ]
+    ],
+    // localPatterns: [
+    //   {
+    //     pathname: '/',
+    //     search: ''
+    //   }
+    // ]
   }
 };
 

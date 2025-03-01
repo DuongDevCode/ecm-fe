@@ -6,6 +6,6 @@ type Store = {
 }
 
 export const useStore = create<Store>()((set) => ({
-  totalCart: 0,
+  totalCart: 3,
   setTotalCart: () => set((state) => ({ totalCart: state.totalCart + 1 })),
 }))

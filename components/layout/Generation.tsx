@@ -1,5 +1,5 @@
 'use client'
-import HeaderPage from "./header/desktop"
+import HeaderPage from "./header/Desktop"
 import LoadingGlobal from "../loadingGlobal"
 import {
   QueryClient,

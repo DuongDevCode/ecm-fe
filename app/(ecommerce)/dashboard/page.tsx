@@ -1,5 +1,5 @@
 'use client'
-import LogoBanner from "@/components/Logo/logoBannerEcm"
+import LogoBanner from "@/components/logo/BannerEcm"
 import styles from '@/styles/styles.module.css'
 import FooterPage from "@/components/layout/Footer"
 import { getCurrencyFormat } from "@/lib/utils"
@@ -100,25 +100,26 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
       <div className="pt-12 px-[55px] max-w-[1200px] m-auto">
         <div>
           <h3 className="mt-12 mb-12 text-center uppercase h5 tracking-widest">Featured Products</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {
               (data && data.length) && data?.map((item: any, idx: number) => (
-                <Link href={`/products/detail/${item.id}`} key={idx} className="listing-tem border hover:shadow-xl shadow-md">
+                <Link href={`/products/${item.id}`} key={idx} className="listing-tem border hover:shadow-xl shadow-md">
                   <div className={`${styles['product-thumbnail-listing']} block`}>
                     <Image
                       alt="Vercel logo"
                       src={item.image_url}
-                      width={1000}
-                      height={1000}
+                      sizes="100vw"
                       style={{
-                        maxWidth: "100%",
+                        width: "100%",
                         height: "auto",
                       }}
                       layout="responsive"
                       loading="lazy"
+                      placeholder="empty"
                     />
                   </div>
                   <div className={`${styles['product-name']} product-list-name mb-1 p-2`}>

@@ -1,5 +1,5 @@
 import { Calendar, Home, Inbox, Search, Settings, ArchiveIcon, UserCircle, LogOutIcon } from "lucide-react"
-import LogoAdmin from "@/components/Logo/logoAdmin"
+import LogoAdmin from "@/components/logo/Admin"
 import {
   Sidebar,
   SidebarContent,

@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import DelAction from "./actions/del";
+import DelAction from "./actions/Del";
 export const columns: ColumnDef<any>[] = [
   {
     accessorKey: "id",

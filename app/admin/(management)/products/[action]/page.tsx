@@ -1,4 +1,4 @@
-import DataFieldItemsProducts from "@/components/table/products/details/default-data";
+import DataFieldItemsProducts from "@/components/table/products/details/Default";
 export default async function PageItems({
   params,
 }: {

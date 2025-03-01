@@ -13,7 +13,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { useStore } from "../store/header/store";
+import { useStore } from "../store/Header";
 import { User } from "lucide-react";
 import Cart from "../cart";
 

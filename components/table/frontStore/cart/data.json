@@ -1,0 +1,56 @@
+[
+  {
+    "id": "83488",
+    "thumbnail": "https://demositefiles.blob.core.windows.net/images/catalog/8957/6157/plv1121-White-thumb.png",
+    "qty": 12,
+    "productName": "Nike court vision low",
+    "productSku": "NJC78436-White-S",
+    "variantOptions": "[{\"attribute_code\":\"size\",\"attribute_name\":\"Size\",\"attribute_id\":2,\"option_id\":25,\"option_text\":\"S\"},{\"attribute_code\":\"color\",\"attribute_name\":\"Color\",\"attribute_id\":3,\"option_id\":18,\"option_text\":\"White\"}]",
+    "productUrl": "/women/nike-court-vision-low-165",
+    "productPrice": {
+      "value": 904,
+      "text": "$904.00"
+    },
+    "lineTotalInclTax": {
+      "value": 10848,
+      "text": "$10,848.00"
+    },
+    "errors": []
+  },
+  {
+    "id": "83491",
+    "thumbnail": "https://demositefiles.blob.core.windows.net/images/catalog/1742/9873/plv3335-Pink-thumb.png",
+    "qty": 1,
+    "productName": "Nike react phantom run flyknit 2",
+    "productSku": "NJC48508-Pink-X",
+    "variantOptions": "[{\"attribute_code\":\"size\",\"attribute_name\":\"Size\",\"attribute_id\":2,\"option_id\":4,\"option_text\":\"X\"},{\"attribute_code\":\"color\",\"attribute_name\":\"Color\",\"attribute_id\":3,\"option_id\":19,\"option_text\":\"Pink\"}]",
+    "productUrl": "/men/nike-react-phantom-run-flyknit-2-180",
+    "productPrice": {
+      "value": 718,
+      "text": "$718.00"
+    },
+    "lineTotalInclTax": {
+      "value": 718,
+      "text": "$718.00"
+    },
+    "errors": []
+  },
+  {
+    "id": "83490",
+    "thumbnail": "https://demositefiles.blob.core.windows.net/images/catalog/9381/3866/plv3878-Purple-thumb.png",
+    "qty": 1,
+    "productName": "Nike react infinity run flyknit",
+    "productSku": "NJC44141-Purple-L",
+    "variantOptions": "[{\"attribute_code\":\"size\",\"attribute_name\":\"Size\",\"attribute_id\":2,\"option_id\":6,\"option_text\":\"L\"},{\"attribute_code\":\"color\",\"attribute_name\":\"Color\",\"attribute_id\":3,\"option_id\":27,\"option_text\":\"Purple\"}]",
+    "productUrl": "/nike-react-infinity-run-flyknit-171",
+    "productPrice": {
+      "value": 543,
+      "text": "$543.00"
+    },
+    "lineTotalInclTax": {
+      "value": 543,
+      "text": "$543.00"
+    },
+    "errors": []
+  }
+]

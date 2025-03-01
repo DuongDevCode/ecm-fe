@@ -2,8 +2,8 @@
 import { use, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import API from "@/config/api";
-import { dataDetailsProducts } from "./data";
-import DetailPage from "./page";
+import { dataDetailsProducts } from "./Data";
+import DetailPage from "./Page";
 export default function DataFieldItemsProducts({
   params
 }: {

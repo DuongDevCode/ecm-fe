@@ -1,0 +1,18 @@
+{
+  "image": {
+    "alt": "Nike react infinity run flyknit",
+    "thumb":
+      "https://demositefiles.blob.core.windows.net/images/catalog/9381/3866/plv3878-Purple-thumb.png",
+    "single":
+      "https://demositefiles.blob.core.windows.net/images/catalog/9381/3866/plv3878-Purple-single.png"
+  },
+  "gallery": [
+    {
+      "alt": "Nike react infinity run flyknit",
+      "thumb":
+        "https://demositefiles.blob.core.windows.net/images/catalog/1670/7826/plv6172-Purple-thumb.png",
+      "single":
+        "https://demositefiles.blob.core.windows.net/images/catalog/1670/7826/plv6172-Purple-single.png"
+    }
+  ]
+}

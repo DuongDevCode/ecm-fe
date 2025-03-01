@@ -6,10 +6,10 @@ import SignInModal from "../Sign-in";
 import { AlignJustify } from "lucide-react";
 import styles from '@/styles/styles.module.css'
 // import {MobileHeader} from "@/app/components/layout/header/mobile";
-import { MobileHeader } from "./mobile";
+import { MobileHeader } from "./Mobile";
 import { useRouter } from "next/navigation";
 // import NavMenu from "../NavBarMenu";
-import Logo from "@/components/Logo/logoHeaderEcm";
+import Logo from "@/components/logo/HeaderEcm";
 import NavMenu from "../NavBarMenu";
 import Link from "next/link";
 
