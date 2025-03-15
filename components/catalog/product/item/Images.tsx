@@ -68,7 +68,7 @@ export default function Images({
       <Current image={current} />
       <ul className="more-view-thumbnail product-gallery mt-8 grid grid-cols-4 gap-4">
         {thumbs.map((i, j) => (
-          <li key={j} className="flex justify-center items-center border hover:border-sky-500">
+          <li key={j} className="flex justify-center items-center">
             <button
               type="button"
               onClick={(e) => {
@@ -77,6 +77,7 @@ export default function Images({
               }}
             >
               <Image
+                className="border hover:border-sky-500"
                 src={i.thumb}
                 alt="thumbnail_img"
                 width={100}

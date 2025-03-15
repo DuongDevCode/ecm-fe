@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import Breadcrumb from "@/components/ui/breadcrumb";
 import DataTable from "@/components/table/frontStore/cart/data-table";
 import { columns } from "@/components/table/frontStore/cart/data-table-columns";

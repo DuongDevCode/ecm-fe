@@ -25,8 +25,8 @@ export default function ProductDetailItemPage({ id }: { id: string }) {
     "border p-2 hover:border-[#006e52] hover:text-[#006e52] hover:bg-white cursor-pointer outline-none";
   const [itemImg, setItemImg] = useState<StaticImageData>(mountain);
   const [type, setType] = useState<ITypeProdSchema>({
-    size: "M",
-    color: "pink",
+    size: "",
+    color: "",
     count: "1",
   });
   // const { isPending, error, data } = useQuery({
